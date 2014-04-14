@@ -1,0 +1,1 @@
+("5.92" ("2c11250144bf14d27d6ec2b78fb41500fa0bc54c" . "bb5a8484b139453df95902c260721953ff224f02") (collects #"net" #"url.rkt") (collects #"racket" #"main.rkt") (collects #"json" #"main.rkt") (collects #"racket" #"system.rkt") (collects #"racket" #"runtime-config.rkt"))
