@@ -8,13 +8,14 @@
 (require "MIRTOlib.rkt") ;Myrtle Library
 (require racket/system) ;Racket System Use For CLI
 (require web-server/servlet web-server/servlet-env) ;Web Server App
+(require net/uri-codec)
 
 (setup) ;Setup For Myrtle
 (enableIR) ;Enable IR Sensors On Myrtle
 (define verify null) ;Controller Verification
 
 (define (say mytext)
-  (process (string-append "espeak --stdout -s 150 -a 200 -ven+f3 " mytext " 2> /dev/null | aplay -q"))
+  (process (string-append "espeak --stdout -s 150 -a 200 -ven+f3 \"" mytext "\" 2> /dev/null | aplay -q"))
   )
 
 ;=================================================================================================================================================================
@@ -91,7 +92,7 @@
      ( ;This is for speech
       (and (exists-binding? 'talk posts) (and (exists-binding? 'text posts) ))
       ;; Talk here! 
-      (say (first (extract-bindings 'text posts)))
+      (say (uri-decode (first (extract-bindings 'text posts))))
       (response/xexpr "Talked")
 
        )
