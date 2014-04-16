@@ -89,6 +89,21 @@ function move(s1, s2) /* Movement Performer */
 		$.get(addr + '/mdx', {stop:1, v:verify}); /* $.get stop */
 	}
 }
+
+function talk()
+{
+        var text2talk = document.getElementById("speechtext")).value;
+	var botip = _('botip').value;						/* G Variable */	
+	var verify = _('guid').innerHTML;					/* G Variable */
+	var addr = 'http://' + _('botip').value;			/* G Variable */
+	if((text2talk != ''))
+	{
+		$.get(addr + '/mdx', {talk:1, text:text2talk, v:verify}); /* $.get talk */
+	}
+}
+
+
+
 var onMove = "F"; /* For move once only */
 function nav(t) /* Movement Analyser -------------------------------------------------------------------- NEED TEST*/
 {
@@ -396,6 +411,8 @@ body{font-family:Arial; text-align:center;color:white;background-color:gray;}
 	<input type="button" value="C" id="mC" onmousedown="javascript:nav('c')" onmouseup="javascript:nav('end')"/><br>
 
 
+        <textarea name="speechtext" cols="50" rows="10"><br>
+       <input type="button" value="Talk!" onClick="javascript:talk();">
 	<img src="img/Camera.png" id="aI" onClick="javascript:act('i');"/>
 	<!-- <img src="img/Video.png" id="aV" onClick="javascript:act('v');"/> -->
 <!--	<img src="img/Line_Follow.png" id="aL" onClick="javascript:act('l');"/>

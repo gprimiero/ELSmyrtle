@@ -13,6 +13,9 @@
 (enableIR) ;Enable IR Sensors On Myrtle
 (define verify null) ;Controller Verification
 
+(define (say mytext)
+  (process (string-append "espeak --stdout -s 150 -a 200 -ven+f3 " mytext " 2> /dev/null | aplay -q"))
+  )
 
 ;=================================================================================================================================================================
 (
@@ -85,7 +88,13 @@
         )
       )
         
-        ;; Add speech here
+     ( ;This is for speech
+      (and (exists-binding? 'talk posts) (and (exists-binding? 'text posts) ))
+      ;; Talk here! 
+      (say (first (extract-bindings 'text posts)))
+      (response/xexpr "Talked")
+
+       )
         
         
         ) ;; end of cond verification exists and matches.
