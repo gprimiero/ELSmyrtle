@@ -233,61 +233,65 @@ function act(t) /* Action Analyser */
 /* -----------Keyboard Controls----------- */
 window.onkeypress = function(e) /* Document key presses*/
 {
+  evt = e || window.event;
+  var charCode = evt.which || evt.keyCode;
+  var charStr = String.fromCharCode(charCode);
+  var charStr = charCode; // Ah ah ah this is a number!
 	/* Navigation Controls */
 	if(onMove == "F")
 	{
-		if(e.keyCode == 119) /* Forward */
+		if(charStr == 119) /* Forward */
 		{
 			nav('w');
 		}
-		if(e.keyCode == 115) /* Backward */
+		if(charStr == 115) /* Backward */
 		{
 			nav('s');
 		}
-		if(e.keyCode == 97) /* Left */
+		if(charStr == 97) /* Left */
 		{
 			nav('a');
 		}	
-		if(e.keyCode == 100) /* Right */
+		if(charStr == 100) /* Right */
 		{
 			nav('d');
 		}
-		if(e.keyCode == 113) /* F-Left */
+		if(charStr == 113) /* F-Left */
 		{
 			nav('q');
 		}
-		if(e.keyCode == 101) /* F-Right */
+		if(charStr == 101) /* F-Right */
 		{
 			nav('e');
 		}
-		if(e.keyCode == 122) /* B-Left */
+		if(charStr == 122) /* B-Left */
 		{
 			nav('z');
 		}
-		if(e.keyCode == 99) /* B-Right */
+		if(charStr == 99) /* B-Right */
 		{
 			nav('c');
 		}
 	}
 	/* Command Controls ---------------------------------- NEED Command Sender + IMG CLICK*/
-	if(e.keyCode == 105) /* Capture Image */
+	if(charStr == 105) /* Capture Image */
 	{
 		act('i');
 	}
-	if(e.keyCode == 118) /* Video Record */
+	if(charStr == 118) /* Video Record */
 	{
 		act('v');
 	}
-	if(e.keyCode == 108) /* Line Follow */
+	if(charStr == 108) /* Line Follow */
 	{
 		act('l');
 	}
-	if(e.keyCode == 116) /* Voice Recoginition */
+	if(charStr == 116) /* Voice Recoginition */
 	{
 		act('t');
 	}
 	/* Speed Adjustments */
-	if(e.keyCode == 91) /* Decrease Speed */
+	if(charStr == 91) /* Decrease Speed */
 	{
 		if((_('spdnum').value > 1) || (_('spdslide').value > 1))
 		{
@@ -295,7 +299,7 @@ window.onkeypress = function(e) /* Document key presses*/
 			_('spdslide').value--;
 		}
 	}
-	if(e.keyCode == 93) /* Increase Speed */
+	if(charStr == 93) /* Increase Speed */
 	{
 		if((_('spdnum').value < 100) || (_('spdslide').value < 100))
 		{

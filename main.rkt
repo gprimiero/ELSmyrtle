@@ -80,8 +80,8 @@
       (and (exists-binding? 'act posts) (exists-binding? 'command posts) (equal? (first (extract-bindings 'command posts)) "capimg")) ;Toggle Image Capture
       (
        let ([imgname (number->string (current-seconds))]) ;Let image name be the current seconds
-        (and (system (string-append "raspistill -t 500 -o /home/pi/dc/cap/" imgname ".jpeg")) ;System out capture image
-             (response/xexpr `(img ((src ,(string-append "/cap/" imgname ".jpeg"))))))
+        (and (system (string-append "raspistill -t 500 -o /home/pi/ELSmyrtle/cap/" imgname ".jpeg")) ;System out capture image
+             (response/xexpr `(img ((width "25%") (height "25%") (src ,(string-append "/cap/" imgname ".jpeg"))))))
         )
       )
         
