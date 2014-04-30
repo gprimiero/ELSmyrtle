@@ -29,7 +29,7 @@
    ( (and (exists-binding? 'link posts) (exists-binding? 'v posts)) ;If link command and GUID exists
       (
        if(null? verify) ;If server verify is empty
-         (and (set! verify (first (extract-bindings 'v posts))) (response/xexpr verify)) ;Set verify and response back
+         (and (set! verify (first (extract-bindings 'v posts))) (printf "Linking to ~a\n" verify) (response/xexpr verify)) ;Set verify and response back
          (and (response/xexpr `(html (script "alert('This robot already linked!');")))) ;Response alert robot already linked
       )
       ) ;; end of link

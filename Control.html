@@ -92,16 +92,15 @@ function move(s1, s2) /* Movement Performer */
 
 function talk()
 {
-        var text2talk = document.getElementById("speechtext")).value;
-	var botip = _('botip').value;						/* G Variable */	
-	var verify = _('guid').innerHTML;					/* G Variable */
-	var addr = 'http://' + _('botip').value;			/* G Variable */
-	if((text2talk != ''))
-	{
-		$.get(addr + '/mdx', {talk:1, text:text2talk, v:verify}); /* $.get talk */
-	}
+        var text2talk = document.getElementById("speechtext").value;
+        var botip = _('botip').value;
+        var verify = _('guid').innerHTML;
+        var addr = 'http://' + _('botip').value;
+        if (text2talk != '')
+        {
+                $.get(addr + '/mdx', {talk:1, text:text2talk, v:verify});
+        }
 }
-
 
 
 var onMove = "F"; /* For move once only */
@@ -252,6 +251,9 @@ window.onkeypress = function(e) /* Document key presses*/
   var charCode = evt.which || evt.keyCode;
   var charStr = String.fromCharCode(charCode);
   var charStr = charCode; // Ah ah ah this is a number!
+
+var obj = document.getElementById("speechtext");
+if (!(document.activeElement === obj)) {
 	/* Navigation Controls */
 	if(onMove == "F")
 	{
@@ -322,6 +324,7 @@ window.onkeypress = function(e) /* Document key presses*/
 			_('spdslide').value++;
 		}
 	}
+}
 }
 window.onkeyup = function() /* Document key ups */
 {
@@ -411,8 +414,8 @@ body{font-family:Arial; text-align:center;color:white;background-color:gray;}
 	<input type="button" value="C" id="mC" onmousedown="javascript:nav('c')" onmouseup="javascript:nav('end')"/><br>
 
 
-        <textarea name="speechtext" cols="50" rows="10"><br>
-       <input type="button" value="Talk!" onClick="javascript:talk();">
+        <textarea name="speechtext" id="speechtext" cols="50" rows="10"></textarea><br>
+        <input type="button" value="Talk" onClick="javascript:talk();"> 
 	<img src="img/Camera.png" id="aI" onClick="javascript:act('i');"/>
 	<!-- <img src="img/Video.png" id="aV" onClick="javascript:act('v');"/> -->
 <!--	<img src="img/Line_Follow.png" id="aL" onClick="javascript:act('l');"/>
